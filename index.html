@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#07141b">
+  <title>BLACK VEIL — SR-71 Night Run</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;500;600;700;800&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main id="game-shell">
+    <canvas id="flight" aria-label="Flight simulator game"></canvas>
+    <div class="scanlines" aria-hidden="true"></div>
+    <header class="topbar">
+      <a class="brand" href="#" aria-label="Black Veil home"><span class="brand-mark">✦</span><span>BLACK<span class="brand-light"> VEIL</span><small>STRATEGIC RECONNAISSANCE</small></span></a>
+      <div class="mission-tag"><span class="live-dot"></span><span>OPERATION</span><strong>RAIN SHADOW</strong></div>
+      <button id="sound-toggle" class="icon-button" aria-label="Toggle sound" title="Toggle sound"><span id="sound-icon">♪</span></button>
+    </header>
+
+    <section class="hud" aria-live="polite">
+      <div class="readout left-readout">
+        <div class="eyebrow">FLIGHT DATA <span class="tiny-rule"></span></div>
+        <div class="metric"><strong id="speed">000</strong><span>KT</span></div>
+        <div class="meter"><i id="speed-bar"></i></div>
+        <div class="data-row"><span>ALTITUDE</span><strong><b id="altitude">0000</b> FT</strong></div>
+        <div class="data-row"><span>HEADING</span><strong><b id="heading">000</b>°</strong></div>
+        <div class="data-row"><span>THROTTLE</span><strong id="throttle-read">MIL</strong></div>
+      </div>
+      <div class="readout right-readout">
+        <div class="eyebrow">MISSION STATUS <span class="tiny-rule"></span></div>
+        <div class="objective" id="objective">REACH THE COAST</div>
+        <div class="progress-track"><i id="progress-bar"></i></div>
+        <div class="data-row"><span>RADAR SITES</span><strong id="targets">00 / 03</strong></div>
+        <div class="data-row"><span>MISSILES</span><strong id="missiles">06</strong></div>
+        <div class="data-row"><span>HULL</span><strong class="hull-value"><i id="hull-bar"></i></strong></div>
+      </div>
+      <div class="lock-indicator" id="lock-indicator"><span class="lock-corners"></span><span>ACQUIRING</span><b>---</b></div>
+      <div class="warning" id="warning"></div>
+      <div class="reticle"><span></span><i></i><b></b></div>
+    </section>
+
+    <footer class="bottom-hud">
+      <div class="comms"><span class="comms-icon">◉</span><div><small>MISSION CONTROL</small><strong id="comms">Blackbird, you are clear to proceed.</strong></div></div>
+      <div class="radar"><div class="radar-sweep"></div><div class="radar-dot dot-one"></div><div class="radar-dot dot-two"></div><div class="radar-dot dot-three"></div><span>N</span><small>TACTICAL</small></div>
+      <div class="aircraft-label"><span>SR-71</span><small>BLACKBIRD&nbsp; / &nbsp;01</small></div>
+    </footer>
+
+    <div id="overlay" class="overlay">
+      <div class="briefing-card">
+        <div class="brief-top"><span class="mission-code">CLASSIFIED&nbsp; / &nbsp;FLIGHT BRIEF</span><span class="weather"><i></i>SEVERE WEATHER</span></div>
+        <div class="title-kicker">NORTH ATLANTIC · 02:47 LOCAL</div>
+        <h1>THE <em>RAIN</em><br>SHADOW</h1>
+        <p class="brief-copy">A storm has swallowed the coastline. Three hostile radar installations are guiding interceptors into allied airspace. Get in fast, take them offline, and cross the coast before the weather closes around you.</p>
+        <div class="brief-meta"><div><small>YOUR AIRCRAFT</small><strong>LOCKHEED SR-71</strong></div><div><small>MISSION PROFILE</small><strong>HIGH-SPEED STRIKE</strong></div></div>
+        <div class="objective-list"><span><b>01</b> DESTROY RADAR SITES <strong>03</strong></span><span><b>02</b> MAINTAIN FLIGHT ENVELOPE <strong>Mach 1+</strong></span><span><b>03</b> REACH EXTRACTION POINT <strong>08,000 FT</strong></span></div>
+        <button id="start-button" class="start-button"><span>START MISSION</span><b>↗</b></button>
+        <div class="controls-note"><span>WASD / ARROWS</span> FLIGHT &nbsp;·&nbsp; <span>SHIFT</span> AFTERBURNER &nbsp;·&nbsp; <span>SPACE</span> FIRE &nbsp;·&nbsp; <span>P</span> PAUSE</div>
+      </div>
+      <div class="overlay-caption"><span>SR-71 BLACKBIRD</span><i></i><span>OPERATION RAIN SHADOW</span></div>
+    </div>
+    <div class="pause-screen" id="pause-screen"><div>FLIGHT PAUSED</div><small>PRESS P TO RESUME</small></div>
+    <div id="end-screen" class="overlay end-screen"><div class="briefing-card end-card"><div class="mission-code" id="end-kicker">MISSION DEBRIEF</div><h2 id="end-title">MISSION COMPLETE</h2><p id="end-copy"></p><div class="brief-meta"><div><small>RADAR SITES</small><strong id="end-sites">03 / 03</strong></div><div><small>FLIGHT TIME</small><strong id="end-time">00:00</strong></div></div><button id="retry-button" class="start-button"><span>FLY AGAIN</span><b>↻</b></button></div></div>
+  </main>
+  <script src="game.js"></script>
+</body>
+</html>
