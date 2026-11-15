@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
+  <meta name="theme-color" content="#07121b" />
+  <title>BLACK RAIN — Cape Intercept</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;500;600;700;800;900&family=IBM+Plex+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <main class="game-shell">
+    <canvas id="game" aria-label="Black Rain arcade flight combat game"></canvas>
+    <div class="vignette"></div>
+    <header class="topbar">
+      <div class="brand"><span class="brand-mark">BR</span><span>BLACK RAIN <i>/</i> CAPE INTERCEPT</span></div>
+      <div class="top-right"><span class="live-dot"></span><span>OPERATIONAL</span><span class="sep">|</span><span id="clock">00:00</span></div>
+    </header>
+    <section class="mission-strip" aria-live="polite">
+      <div class="mission-label">MISSION <b>04</b><span> / </span> WEATHER FRONT</div>
+      <div class="mission-objective"><span class="target-icon">⌖</span><span id="objective">NEUTRALIZE HOSTILE FLIGHT</span></div>
+      <div class="mission-progress"><div class="progress-track"><i id="progress"></i></div><b id="kills">00</b><span> / 06</span></div>
+    </section>
+    <div class="hud-left">
+      <div class="hud-card altitude-card"><span class="hud-caption">ALTITUDE</span><div><strong id="altitude">18,400</strong><small>FT</small></div><div class="meter"><i id="alt-meter"></i></div></div>
+      <div class="hud-card speed-card"><span class="hud-caption">AIRSPEED</span><div><strong id="speed">1,840</strong><small>KT</small></div><div class="speed-status" id="speed-state">MACH 2.8 <span>●</span></div></div>
+      <div class="hud-card threat-card"><span class="hud-caption">THREAT</span><div class="threat-readout"><span class="threat-dot"></span><strong id="threat">LOW</strong></div></div>
+    </div>
+    <div class="hud-right">
+      <div class="radar-panel"><div class="radar-head"><span>TACTICAL DISPLAY</span><span>RNG 40 NM</span></div><div class="radar"><div class="radar-sweep"></div><span class="radar-blip b1"></span><span class="radar-blip b2"></span><span class="radar-blip b3"></span><span class="radar-player">▲</span><div class="radar-cross x"></div><div class="radar-cross y"></div></div><div class="radar-foot"><span>● HOSTILE</span><span>▲ FRIENDLY</span></div></div>
+      <div class="weapon-panel"><span class="hud-caption">WEAPON SYSTEMS</span><div class="weapon-row"><span class="weapon-glyph">〰</span><div class="weapon-name"><b>VULCAN</b><small>30MM · UNLIMITED</small></div><span class="weapon-ready">READY</span></div><div class="weapon-row missile-row"><span class="weapon-glyph">◇</span><div class="weapon-name"><b>PHOENIX</b><small>LONG-RANGE · <span id="missile-count">04</span> REMAIN</small></div><span class="weapon-ready">READY</span></div></div>
+    </div>
+    <div class="reticle" id="reticle"><div class="reticle-circle"></div><span class="reticle-top"></span><span class="reticle-bottom"></span><span class="reticle-left"></span><span class="reticle-right"></span><div class="reticle-center"></div><span class="lock-label" id="lock-label">NO LOCK</span></div>
+    <div class="warning-banner" id="warning"><span>▲</span> MISSILE INBOUND <span class="warning-distance">BREAK LEFT</span></div>
+    <div class="hit-flash" id="hit-flash"></div>
+    <div class="bottom-hud"><div class="integrity"><span class="hud-caption">AIRFRAME</span><div class="integrity-track"><i id="health-bar"></i></div><b id="health">100%</b></div><div class="center-readout"><span>SR-71 <i>BLACKBIRD</i></span><span class="separator">/</span><span>CALLSIGN <b>RAVEN 1</b></span></div><div class="boost-indicator"><span class="hud-caption">AFTERBURNER</span><div class="boost-track"><i id="boost-bar"></i></div><b id="boost-text">READY</b></div></div>
+    <div class="toast" id="toast"></div>
+    <section class="overlay" id="overlay">
+      <div class="briefing-card">
+        <div class="card-kicker"><span>CLASSIFIED // EYES ONLY</span><span>OPERATION 04 · 01:42Z</span></div>
+        <div class="card-line"></div>
+        <div class="eyebrow">NORTH ATLANTIC · CAPE RAIN ZONE</div>
+        <h1>BLACK<br><em>RAIN</em></h1>
+        <div class="subtitle">THE STORM IS YOUR COVER.</div>
+        <p class="briefing-copy">Hostile aircraft are closing on the Cape corridor. Fly the <b>SR-71 Blackbird</b> through the weather front and clear the interceptors before they reach the fleet.</p>
+        <div class="briefing-data"><div><span>OBJECTIVE</span><b>6 HOSTILES</b></div><div><span>CONDITIONS</span><b>HEAVY RAIN · LOW VIS</b></div><div><span>PLATFORM</span><b>SR-71 BLACKBIRD</b></div></div>
+        <button id="start-button" class="primary-button"><span>▶</span> SCRAMBLE <i>START MISSION</i></button>
+        <div class="controls-hint"><span>WASD / ARROWS <b>FLIGHT</b></span><span>SPACE <b>VULCAN</b></span><span>X <b>PHOENIX</b></span><span>SHIFT <b>BOOST</b></span></div>
+      </div>
+      <div class="overlay-footer"><span>RAVEN 1 · FLIGHT CONTROL</span><span>ENCRYPTED LINK <i>●</i></span></div>
+    </section>
+    <section class="result-overlay hidden" id="result-overlay"><div class="result-card"><div class="eyebrow" id="result-kicker">MISSION COMPLETE</div><h2 id="result-title">CORRIDOR<br><em>SECURED</em></h2><p id="result-copy">All hostile aircraft neutralized.</p><div class="result-stats"><div><span>KILLS</span><b id="final-kills">06</b></div><div><span>SURVIVAL</span><b id="final-health">100%</b></div><div><span>TIME</span><b id="final-time">00:00</b></div></div><button id="restart-button" class="primary-button"><span>↻</span> FLY AGAIN <i>REDEPLOY</i></button></div></section>
+    <div class="pause-badge hidden" id="pause-badge">PAUSED <span>PRESS P TO RESUME</span></div>
+    <div class="touch-controls" id="touch-controls"><div class="touch-pad"><button data-key="ArrowLeft">◀</button><div><button data-key="ArrowUp">▲</button><button data-key="ArrowDown">▼</button></div><button data-key="ArrowRight">▶</button></div><div class="touch-actions"><button data-key="Space" class="fire-touch">GUN</button><button data-key="KeyX" class="missile-touch">MISSILE</button><button data-key="ShiftLeft" class="boost-touch">BOOST</button></div></div>
+    <footer class="screen-footer"><span>FLIGHT RECORDER <b>LIVE</b></span><span>VISIBILITY <b>POOR</b> <span class="rain-icon">☂</span></span></footer>
+  </main>
+  <script src="game.js"></script>
+</body>
+</html>
