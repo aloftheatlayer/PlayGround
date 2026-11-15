@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <meta name="theme-color" content="#07141b" />
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='8' fill='%2307141b'/%3E%3Cpath d='M18 48V16h7l15 20V16h7v32h-7L25 28v20z' fill='%23baf3ca'/%3E%3C/svg%3E" />
+  <title>Nightline — Underground Driver</title>
+  <script type="module" crossorigin src="/assets/index-DgeszKl9.js"></script>
+  <link rel="stylesheet" crossorigin href="/assets/index-BLy9MzmI.css">
+</head>
+<body>
+  <div id="game">
+    <canvas id="scene"></canvas>
+    <div class="vignette"></div>
+    <header class="topbar">
+      <a class="brand" href="#" aria-label="Nightline home"><span class="brand-mark">N</span><span>NIGHTLINE <small>TRANSIT AUTHORITY</small></span></a>
+      <div class="route-pill"><span class="live-dot"></span><span id="route-name">NORTHBOUND · SERVICE 01</span></div>
+      <div class="clock"><span class="clock-label">LOCAL TIME</span><b id="clock">23:48:06</b></div>
+    </header>
+    <section class="route-strip" aria-label="Route progress">
+      <div class="route-head"><span>YOUR ROUTE</span><span id="route-count">01 / 04</span></div>
+      <div class="route-line" id="route-line"></div>
+    </section>
+    <div class="station-callout" id="station-callout"><span class="callout-kicker">APPROACHING NEXT STATION</span><strong id="next-station">HARBOR POINT</strong><span id="distance-label">1,240 m ahead</span></div>
+    <div class="speed-cluster"><div class="speed-ring"><div class="speed-readout"><span id="speed-value">0</span><small>MPH</small></div></div><div class="speed-caption">TRAIN SPEED</div><div class="limit-line"><span class="limit-dot"></span><span>LINE LIMIT</span><b id="limit-value">45</b></div></div>
+    <div class="objective" id="objective"><span class="objective-icon">✳</span><div><b id="objective-title">READY FOR DEPARTURE</b><span id="objective-text">Throttle up to leave the terminal.</span></div></div>
+    <div class="warning" id="warning"><span>!</span><b>OVERSPEED</b><small>REDUCE SPEED</small></div>
+    <div class="arrival-banner" id="arrival-banner"><span>◈</span><b>STATION ARRIVAL</b><small id="arrival-score">STOP ACCURACY +0</small></div>
+    <div class="cab">
+      <div class="cab-top"><span class="cab-label">NIGHTLINE <i>•</i> CAB 01</span><span class="cab-lights"><i></i><i></i><i></i></span></div>
+      <div class="cab-main">
+        <div class="cab-control"><span>TRACTION</span><div class="lever-track"><div id="throttle-fill"></div><div class="lever-knob" id="throttle-knob"></div></div><b id="throttle-label">IDLE</b></div>
+        <div class="cab-center"><div class="screen"><div class="screen-title"><i></i> LINE STATUS <span>N-01</span></div><div class="screen-stats"><div><small>NEXT STOP</small><b id="screen-stop">HARBOR PT.</b></div><div><small>REMAINING</small><b id="screen-distance">1.2 KM</b></div></div><div class="screen-track"><span></span><i></i><i></i><i></i><i></i></div><div class="screen-foot"><span>DOORS <b id="door-status">LOCKED</b></span><span>POWER <b id="power-status">READY</b></span></div></div></div>
+        <div class="cab-control brake-control"><span>BRAKE</span><div class="lever-track"><div id="brake-fill"></div><div class="lever-knob" id="brake-knob"></div></div><b id="brake-label">RELEASED</b></div>
+      </div>
+      <div class="cab-bottom"><span><i class="keycap">W</i> THROTTLE <i class="keycap">S</i> BRAKE</span><span class="cab-hint"><i class="keycap">H</i> HORN <i class="keycap">F</i> HEADLIGHTS</span><span class="cab-model">R-72 <i>EXPRESS</i></span></div>
+    </div>
+    <div class="mobile-controls"><button id="mobile-brake" aria-label="Brake">−<small>BRAKE</small></button><button id="mobile-horn" aria-label="Horn">◉<small>HORN</small></button><button id="mobile-throttle" aria-label="Throttle">+<small>POWER</small></button></div>
+    <div class="start-screen" id="start-screen"><div class="start-card"><div class="start-emblem"><span>N</span><i></i></div><p class="eyebrow">NIGHTLINE TRANSIT AUTHORITY <span>•</span> DRIVER TRAINING</p><h1>THE CITY<br><em>NEVER SLEEPS.</em></h1><p class="start-copy">Take the controls on the midnight northbound. Watch your speed, read the signals, and bring every passenger to a smooth stop.</p><div class="briefing"><div><span>ROUTE</span><b>THE NORTH LOOP</b></div><div><span>STATIONS</span><b>04 STOPS</b></div><div><span>SHIFT</span><b>23:48 · NIGHT</b></div></div><button id="start-button">TAKE THE CONTROLS <span>→</span></button><p class="start-hint">W / ↑ ACCELERATE <i>·</i> S / ↓ BRAKE <i>·</i> H HORN <i>·</i> F HEADLIGHTS</p></div><div class="start-footer"><span>EST. 1968</span><span>METROPOLITAN RAIL <i>✳</i></span><span>DRIVE SAFE. GET HOME.</span></div></div>
+    <div class="pause-screen" id="pause-screen"><div><span class="pause-icon">Ⅱ</span><p class="eyebrow">SERVICE PAUSED</p><h2>TAKE A BREATHER.</h2><p>Your train is waiting. The city can wait too.</p><button id="resume-button">RESUME SERVICE <span>→</span></button><small>PRESS ESC TO RETURN TO THE CAB</small></div></div>
+    <div class="toast" id="toast"></div>
+  </div>
+</body>
+</html>
